@@ -1,0 +1,37 @@
+## PROJETO JOGOS WEB
+Projeto desenvolvido em grupo com o propósito de criar um site contendo jogos feitos utilizando HTML, CSS e JS.
+
+---
+
+## OBJETIVOS
+Desenvolver um site de jogos para apresentação em feira de profissões, e praticar: 
+-CSS
+-HTML
+-JS
+-Organização de projetos
+-Trabalho em equipe
+-Git e GitHub
+
+---
+
+## JOGOS
+- Jogo da forca
+- Quiz
+- Jogo da velha
+
+---
+
+## TECNOLOGIAS UTILIZADAS
+- HTML5
+- CSS3
+- JavaScript
+
+---
+
+## INTEGRANTES
+- Ulrich Bota - GitHub: @ulrichdanielb
+- Georgia Lobato - GitHub: 
+- Heloa Souza - GitHub:
+- Liane Toge - GitHub: 
+- Luiz Savedra - GitHub: 
+- Manuela Garcez - GitHub:
