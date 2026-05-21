@@ -30,8 +30,8 @@ Desenvolver um site de jogos para apresentação em feira de profissões, e prat
 
 ## INTEGRANTES
 - Ulrich Bota - GitHub: @ulrichdanielb
-- Georgia Lobato - GitHub: 
+- Georgia Lobato - GitHub: @GeorgiaLobato
 - Heloa Souza - GitHub:
-- Liane Toge - GitHub: 
-- Luiz Savedra - GitHub: 
-- Manuela Garcez - GitHub:
+- Liane Toge - GitHub: @lianetoge
+- Luiz Savedra - GitHub: MesmericLowi
+- Manuela Garcez - GitHub: @manuzg
