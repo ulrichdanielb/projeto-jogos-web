@@ -16,8 +16,10 @@ Desenvolver um site de jogos para apresentação em feira de profissões, e prat
 
 ## JOGOS
 - Jogo da forca
-- Quiz
+- Jogo da memória
 - Jogo da velha
+- Jogo de reflexo
+- Pedra, papel e tesoura
 
 ---
 
