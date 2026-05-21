@@ -33,5 +33,5 @@ Desenvolver um site de jogos para apresentação em feira de profissões, e prat
 - Georgia Lobato - GitHub: @GeorgiaLobato
 - Heloa Souza - GitHub:
 - Liane Toge - GitHub: @lianetoge
-- Luiz Savedra - GitHub: MesmericLowi
+- Luiz Savedra - GitHub: @MesmericLowi
 - Manuela Garcez - GitHub: @manuzg
