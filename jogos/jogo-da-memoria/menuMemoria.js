@@ -7,5 +7,5 @@ DocumentType.getElementbyId("b2"),addEventListener("click", function (){
 })
 
 DocumentType.getElementbyId("s"),addEventListener("click", function (){
-    window.location.href = "COLOCAR LINK AQUI";
+    window.location.href = "index.html";
 })
