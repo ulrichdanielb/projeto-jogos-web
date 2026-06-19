@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'Arcade';
+  src: url('fontes/PressStart2P.tff') format('tff'),
+       url('fontes/PressStart2P.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+    background-color: black;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arcade', sans-serif;
+}
+
+.menu {
+    margin-top: 100px;
+}
+
+button {
+    display:block;
+    margin: 20px auto;
+    padding: 25px 50px;
+    font-size: 20px;
+    border: 2px solid #c2c2c2;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.3s;
+    color: rgb(255, 255, 255);
+    font-family: 'Arcade', sans-serif;
+}
+
+button:hover {
+  background-color: #696969;
+}
+
+h1 {
+    color: rgb(255, 33, 33);
+    font-size: 80px;
+    font-family: 'Arcade', sans-serif;
+}
