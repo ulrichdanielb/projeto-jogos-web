@@ -1,0 +1,129 @@
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .wrap {
+    background: #000000;
+    padding: 24px 16px 167px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    font-family: 'Press Start 2P', monospace;
+  }
+  .title {
+    color: #00ff41;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px #00ff41;
+    animation: flicker 2s step-end infinite;
+  }
+  @keyframes flicker { 0%,90%,100%{opacity:1} 92%,96%{opacity:0.5} }
+
+  .scoreboard {
+    display: flex;
+    gap: 0;
+    border: 1.5px solid #00ff41;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 380px;
+  }
+  .score-col {
+    flex: 1;
+    text-align: center;
+    padding: 8px 4px;
+    border-right: 1px solid #1a4d1a;
+  }
+  .score-col:last-child { border-right: none; }
+  .score-lbl { color: #007a20; font-size: 6px; margin-bottom: 5px; }
+  .score-num { color: #00ff41; font-size: 15px; }
+
+  .turn-banner {
+    font-size: 9px;
+    color: #00ff41;
+    min-height: 18px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  .turn-banner.p1 { color: #00ff41; }
+  .turn-banner.p2 { color: #ffe600; }
+  .turn-banner.win { color: #00ff41; text-shadow: 0 0 8px #00ff41; font-size: 10px; }
+  .turn-banner.draw { color: #ffe600; }
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 0;
+    border: 2px solid #1a4d1a;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #000000;
+  }
+  .cell {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    cursor: pointer;
+    border-right: 1.5px solid #1a4d1a;
+    border-bottom: 1.5px solid #1a4d1a;
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .cell:nth-child(3n)   { border-right: none; }
+  .cell:nth-child(n+7)  { border-bottom: none; }
+  .cell:hover:not(.taken) { background: #0d2a0d; }
+  .cell.taken { cursor: default; }
+  .cell.win-cell { background: #0d2a0d; border-color: #00ff41; }
+
+  .mode-row {
+    display: flex;
+    gap: 8px;
+  }
+  .mode-btn {
+    background: #001a00;
+    border: 1.5px solid #1a4d1a;
+    color: #007a20;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    padding: 7px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .mode-btn.active { border-color: #00ff41; color: #00ff41; }
+  .mode-btn:hover  { background: #002a00; }
+
+  .new-btn {
+    background: #001a00;
+    border: 1.5px solid #00ff41;
+    color: #00ff41;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    padding: 9px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 1px;
+  }
+  .new-btn:hover  { background: #003300; }
+  .new-btn:active { transform: scale(0.96); }
+
+  .history-row {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 380px;
+  }
+  .chip {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-family: 'Press Start 2P', monospace;
+  }
+  .chip-win  { color: #00ff41; border: 1px solid #00ff4166; background: #00ff4111; }
+  .chip-lose { color: #ff4141; border: 1px solid #ff414166; background: #ff414111; }
+  .chip-draw { color: #ffe600; border: 1px solid #ffe60066; background: #ffe60011; }
