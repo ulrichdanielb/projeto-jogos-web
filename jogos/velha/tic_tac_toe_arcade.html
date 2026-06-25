@@ -1,0 +1,44 @@
+
+<link rel="stylesheet" href="style.css">
+<div class="wrap">
+  <h2 class="sr-only" style="color: #00ff41;"> JOGO DA VELHA </h2>
+  <div class="scoreboard">
+    <div class="score-col">
+      <div class="score-lbl">🍌 Jogador 1</div>
+      <div class="score-num" id="s1">0</div>
+    </div>
+    <div class="score-col">
+      <div class="score-lbl">Empate</div>
+      <div class="score-num" id="sd">0</div>
+    </div>
+    <div class="score-col">
+      <div class="score-lbl">Jogador 2 🐒</div>
+      <div class="score-num" id="s2">0</div>
+    </div>
+  </div>
+
+  <div class="turn-banner p1" id="banner">🍌 player 1's turn</div>
+
+  <div class="board" id="board">
+    <div class="cell" data-i="0" onclick="move(0)"></div>
+    <div class="cell" data-i="1" onclick="move(1)"></div>
+    <div class="cell" data-i="2" onclick="move(2)"></div>
+    <div class="cell" data-i="3" onclick="move(3)"></div>
+    <div class="cell" data-i="4" onclick="move(4)"></div>
+    <div class="cell" data-i="5" onclick="move(5)"></div>
+    <div class="cell" data-i="6" onclick="move(6)"></div>
+    <div class="cell" data-i="7" onclick="move(7)"></div>
+    <div class="cell" data-i="8" onclick="move(8)"></div>
+  </div>
+
+  <div class="mode-row">
+    <button class="mode-btn active" id="btn2p" onclick="setMode('2p')">2 jogadores</button>
+    <button class="mode-btn" id="btnCpu" onclick="setMode('cpu')">vs CPU 🐒</button>
+  </div>
+
+  <button class="new-btn" onclick="newGame()">▶ NOVO JOGO</button>
+
+  <div class="history-row" id="hist"></div>
+</div>
+
+<script src="script.js"></script>
