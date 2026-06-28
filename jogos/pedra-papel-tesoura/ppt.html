@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="ppt.css" />
+  <title>Pedra, Papel e Tesoura – Play UEL</title>
+</head>
+<body>
+
+  <div class="menu-bg-grid" aria-hidden="true"></div>
+
+  <header class="game-header">
+    <a href="../../index.html" class="back-link" aria-label="Voltar ao menu">← Menu</a>
+    <span class="game-header__title">Pedra, Papel e Tesoura</span>
+  </header>
+
+  <main id="gameStage" aria-live="polite">
+
+    <!-- 1. Tela inicial -->
+    <section class="screen screen--start active" id="screenStart">
+      <p class="screen__eyebrow">Play UEL</p>
+      <h2 class="screen__title">Pedra, Papel<br>e Tesoura</h2>
+      <button class="btn-primary" id="btnStart" onclick="startGame()">Iniciar</button>
+    </section>
+
+    <!-- 2. Anúncio do jogador -->
+    <section class="screen screen--announce" id="screenAnnounce">
+      <div class="announce-badge" id="announceBadge">
+        <span class="announce-badge__label" id="announceLabel">PLAYER 1</span>
+      </div>
+    </section>
+
+    <!-- 3. Tela de escolha -->
+    <section class="screen screen--choices" id="screenChoices">
+      <p class="current-player-label" id="currentPlayerLabel">PLAYER 1</p>
+      <p class="choice-prompt">Escolha sua jogada</p>
+      <div class="choice-grid">
+        <button class="choice-btn" onclick="handleChoice('rock')">
+          <span class="choice-btn__emoji">🪨</span>
+          <span class="choice-btn__name">Pedra</span>
+        </button>
+        <button class="choice-btn" onclick="handleChoice('paper')">
+          <span class="choice-btn__emoji">📄</span>
+          <span class="choice-btn__name">Papel</span>
+        </button>
+        <button class="choice-btn" onclick="handleChoice('scissors')">
+          <span class="choice-btn__emoji">✂️</span>
+          <span class="choice-btn__name">Tesoura</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. Revelação -->
+    <section class="screen screen--reveal" id="screenReveal">
+      <div class="reveal-grid">
+        <div class="reveal-card" id="revealP1">
+          <p class="reveal-card__label">PLAYER 1</p>
+          <span class="reveal-card__emoji" id="revealEmojiP1"></span>
+          <p class="reveal-card__name" id="revealNameP1"></p>
+        </div>
+        <div class="reveal-divider">VS</div>
+        <div class="reveal-card" id="revealP2">
+          <p class="reveal-card__label">PLAYER 2</p>
+          <span class="reveal-card__emoji" id="revealEmojiP2"></span>
+          <p class="reveal-card__name" id="revealNameP2"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Vencedor -->
+    <section class="screen screen--winner" id="screenWinner">
+      <p class="winner-eyebrow" id="winnerEyebrow"></p>
+      <h2 class="winner-title" id="winnerTitle"></h2>
+      <div class="winner-trophies" id="winnerTrophies"></div>
+    </section>
+
+  </main>
+
+  <script src="ppt.js"></script>
+</body>
+</html>

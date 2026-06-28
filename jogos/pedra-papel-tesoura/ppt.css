@@ -1,0 +1,333 @@
+/* ================================================================
+   GAME.CSS — Pedra, Papel e Tesoura
+   Usado exclusivamente em game.html
+   ================================================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:            #0d0d14;
+  --bg-surface:    #16162a;
+  --bg-surface-2:  #1e1e38;
+  --border:        rgba(255,255,255,.08);
+  --accent:        #7c3aed;
+  --accent-bright: #a855f7;
+  --accent-glow:   rgba(168,85,247,.35);
+  --p1:            #f472b6;
+  --p1-glow:       rgba(244,114,182,.3);
+  --p2:            #38bdf8;
+  --p2-glow:       rgba(56,189,248,.3);
+  --radius-xl:     1.5rem;
+  --ease:          .22s cubic-bezier(.4,0,.2,1);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* ── Fundo decorativo ───────────────────────────────────────── */
+.menu-bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(124,58,237,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,58,237,.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(13,13,20,.8);
+  backdrop-filter: blur(12px);
+}
+
+.back-link {
+  position: absolute;
+  left: 1.25rem;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  text-decoration: none;
+  transition: color var(--ease);
+}
+.back-link:hover { color: var(--accent-bright); }
+
+.game-header__title {
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+}
+
+/* ── Palco ──────────────────────────────────────────────────── */
+main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Telas ──────────────────────────────────────────────────── */
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.25rem;
+  padding: 2rem 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(.96);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.screen.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: scale(1);
+}
+
+/* ── 1. Tela inicial ────────────────────────────────────────── */
+.screen__eyebrow {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+}
+
+.screen__title {
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.btn-primary {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+  border: none;
+  border-radius: 999px;
+  padding: .75em 2.5em;
+  cursor: pointer;
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+.btn-primary:hover  { transform: scale(1.05); box-shadow: 0 0 28px var(--accent-glow); }
+.btn-primary:active { transform: scale(.97); }
+
+/* ── 2. Anúncio do jogador ──────────────────────────────────── */
+.announce-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: badgePop .45s cubic-bezier(.2,1.4,.4,1) both;
+}
+@keyframes badgePop {
+  from { transform: scale(.5); opacity: 0; }
+  to   { transform: scale(1);  opacity: 1; }
+}
+
+.announce-badge__label {
+  font-size: clamp(2.5rem, 9vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: -.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.p1-color { color: var(--p1); text-shadow: 0 0 40px var(--p1-glow); }
+.p2-color { color: var(--p2); text-shadow: 0 0 40px var(--p2-glow); }
+
+/* ── 3. Tela de escolha ─────────────────────────────────────── */
+.current-player-label {
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  padding: .35em 1.1em;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+}
+
+.choice-prompt {
+  font-size: .85rem;
+  color: rgba(255,255,255,.4);
+}
+
+.choice-grid {
+  display: flex;
+  gap: .875rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.choice-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  padding: 1.25rem 1rem;
+  min-width: 95px;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  font-family: inherit;
+  color: #fff;
+  transition: background var(--ease), border-color var(--ease),
+              transform var(--ease), box-shadow var(--ease);
+}
+.choice-btn:hover {
+  background: var(--bg-surface-2);
+  border-color: var(--accent-bright);
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 10px 28px rgba(0,0,0,.35), 0 0 18px var(--accent-glow);
+}
+.choice-btn:active { transform: scale(.95); }
+
+.choice-btn__emoji { font-size: 2.2rem; line-height: 1; }
+.choice-btn__name  {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+}
+
+/* ── 4. Revelação ───────────────────────────────────────────── */
+.reveal-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 520px;
+}
+
+.reveal-card {
+  flex: 1;
+  min-width: 120px;
+  max-width: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6rem;
+  padding: 1.5rem .875rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  animation: cardReveal .5s cubic-bezier(.2,1.4,.4,1) both;
+}
+@keyframes cardReveal {
+  from { transform: translateY(20px) scale(.88); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.reveal-card__label {
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.38);
+}
+.reveal-card__emoji { font-size: 2.8rem; line-height: 1; }
+.reveal-card__name  {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+}
+.reveal-card.is-winner {
+  border-color: #fbbf24;
+  box-shadow: 0 0 24px rgba(251,191,36,.28);
+}
+
+.reveal-divider {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: rgba(255,255,255,.15);
+  flex-shrink: 0;
+}
+
+/* ── 5. Vencedor ────────────────────────────────────────────── */
+.winner-eyebrow {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.38);
+}
+
+.winner-title {
+  font-size: clamp(1.6rem, 5.5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.15;
+  animation: winnerBounce .55s cubic-bezier(.2,1.5,.4,1) both;
+}
+@keyframes winnerBounce {
+  0%   { transform: scale(0) rotate(-3deg); opacity: 0; }
+  70%  { transform: scale(1.06) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.winner-trophies {
+  font-size: 2rem;
+  letter-spacing: .2em;
+  animation: fadeUp .45s .25s both ease;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.winner-title.is-draw { color: rgba(255,255,255,.55); }
+
+/* ── Mobile ─────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .choice-btn        { min-width: 80px; padding: 1rem .75rem; }
+  .choice-btn__emoji { font-size: 1.8rem; }
+  .reveal-card       { padding: 1.25rem .75rem; min-width: 100px; }
+  .reveal-card__emoji { font-size: 2.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
