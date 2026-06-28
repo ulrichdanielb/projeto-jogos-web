@@ -121,8 +121,8 @@ reiniciar.addEventListener("click", function()
     player1.classList.remove("atacando");
     player2.classList.remove("atacando");
 
-    player1.src = "imgs/macacoBase.png";
-    player2.src = "imgs/macacoBase.png";
+    player1.src = "imgsReflexo/macacoBase.png";
+    player2.src = "imgsReflexo/macacoBase.png";
 
     vida1 = 10;
     vida2 = 10;
@@ -189,8 +189,8 @@ document.addEventListener("keydown", function(event)
         vida2 -= dano;
         atualizarBarras();
         mostrarEfeito(dano, tempoReacao);
-        player1.src = "imgs/macacoGolpe.png";
-        player2.src = "imgs/macacoDano.png";
+        player1.src = "imgsReflexo/macacoGolpe.png";
+        player2.src = "imgsReflexo/macacoDano.png";
 
 
         if (vida2 <= 0)
@@ -201,8 +201,8 @@ document.addEventListener("keydown", function(event)
             resultado.innerText = "PLAYER 1 VENCEU!";
             tecla.innerText = "";
 
-            player1.src = "imgs/macacoVitorioso.png";
-            player2.src = "imgs/macacoDerrotado.png";
+            player1.src = "imgsReflexo/macacoVitorioso.png";
+            player2.src = "imgsReflexo/macacoDerrotado.png";
 
 
             jogoEncerrado = true;
@@ -211,8 +211,8 @@ document.addEventListener("keydown", function(event)
 
         setTimeout(function()
         {
-            player2.src = "imgs/macacoBase.png";
-            player1.src = "imgs/macacoBase.png";
+            player2.src = "imgsReflexo/macacoBase.png";
+            player1.src = "imgsReflexo/macacoBase.png";
         }, 600);
 
         player1.classList.add("atacando");
@@ -246,8 +246,8 @@ document.addEventListener("keydown", function(event)
         atualizarBarras();
         mostrarEfeito(dano, tempoReacao);
 
-        player2.src = "imgs/macacoGolpe.png";
-        player1.src = "imgs/macacoDano.png";
+        player2.src = "imgsReflexo/macacoGolpe.png";
+        player1.src = "imgsReflexo/macacoDano.png";
 
 
 
@@ -259,8 +259,8 @@ document.addEventListener("keydown", function(event)
             resultado.innerText = "PLAYER 2 VENCEU!";
             tecla.innerText = "";
 
-            player2.src = "imgs/macacoVitorioso.png";
-            player1.src = "imgs/macacoDerrotado.png";
+            player2.src = "imgsReflexo/macacoVitorioso.png";
+            player1.src = "imgsReflexo/macacoDerrotado.png";
 
             jogoEncerrado = true;
             return;
@@ -268,8 +268,8 @@ document.addEventListener("keydown", function(event)
 
         setTimeout(function()
         {
-            player2.src = "imgs/macacoBase.png";
-            player1.src = "imgs/macacoBase.png";
+            player2.src = "imgsReflexo/macacoBase.png";
+            player1.src = "imgsReflexo/macacoBase.png";
         }, 600);
 
         player2.classList.add("atacando");

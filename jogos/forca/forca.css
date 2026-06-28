@@ -1,0 +1,519 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ===== RESET E BASE ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #1a0a2e;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', monospace;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* estrelas de fundo */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, #fff8 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 40%, #fff6 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 10%, #fff8 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 55%, #fff5 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 75%, #fff7 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 30%, #fff6 0%, transparent 100%),
+    radial-gradient(1px 1px at 20% 90%, #fff8 0%, transparent 100%),
+    radial-gradient(2px 2px at 70% 80%, #fff4 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+#game-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 700px;
+  background: #12082a;
+  border: 4px solid #7b2fff;
+  padding: 24px;
+  box-shadow: 0 0 40px #7b2fff66, inset 0 0 30px #1a0a2e;
+}
+
+h1 {
+  color: #f9c74f;
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px #b5450b, 0 0 12px #f9c74f88;
+}
+
+/* ===== TELA DE SELEÇÃO DE MODO ===== */
+#tela-modo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+}
+
+.modo-titulo {
+  color: #90e0ef;
+  font-size: 9px;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.modo-botoes {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-modo {
+  padding: 16px 20px;
+  background: #2d1b5e;
+  border: 3px solid #7b2fff;
+  color: #e0d0ff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+  line-height: 2;
+  min-width: 140px;
+}
+
+.btn-modo:hover {
+  background: #4a2a8a;
+  border-color: #f9c74f;
+  color: #f9c74f;
+  transform: scale(1.05);
+  box-shadow: 0 0 14px #7b2fff;
+}
+
+.modo-icon {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* ===== TELA DE ENTRADA DE PALAVRA (2P) ===== */
+#tela-entrada {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+}
+
+.entrada-titulo {
+  color: #f9c74f;
+  font-size: 9px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.entrada-sub {
+  color: #90e0ef;
+  font-size: 7px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.input-pixel {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 12px;
+  background: #1a0a2e;
+  border: 3px solid #7b2fff;
+  color: #f0e6ff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  outline: none;
+  letter-spacing: 3px;
+}
+
+.input-pixel:focus {
+  border-color: #f9c74f;
+  box-shadow: 0 0 10px #f9c74f44;
+}
+
+.input-pixel::placeholder {
+  color: #4a3a6a;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.entrada-aviso {
+  color: #e63946;
+  font-size: 7px;
+  min-height: 14px;
+  text-align: center;
+}
+
+/* ===== TELA PRINCIPAL DO JOGO ===== */
+#tela-jogo {
+  display: none;
+}
+
+#badge-modo {
+  display: inline-block;
+  background: #2d1b5e;
+  border: 2px solid #7b2fff;
+  color: #b57bff;
+  font-size: 7px;
+  padding: 3px 8px;
+  margin: 0 auto 14px;
+  text-align: center;
+  width: 100%;
+  letter-spacing: 1px;
+}
+
+#status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+/* ===== BANANAS DE VIDA ===== */
+.vidas {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.vida-banana {
+  width: 18px;
+  height: 18px;
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+.vida-banana.perdida {
+  filter: grayscale(1) brightness(0.3);
+  opacity: 0.4;
+}
+
+#tentativas-texto {
+  color: #f9c74f;
+  font-size: 7px;
+}
+
+/* ===== CANVAS DO MACACO ===== */
+#monkey-canvas {
+  display: block;
+  margin: 0 auto 20px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* ===== DICA ===== */
+#dica-texto {
+  text-align: center;
+  color: #90e0ef;
+  font-size: 7px;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+/* ===== PALAVRA ===== */
+#palavra-container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  min-height: 44px;
+}
+
+.letra-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.letra-char {
+  font-size: 18px;
+  color: #f0e6ff;
+  min-width: 22px;
+  text-align: center;
+  text-transform: uppercase;
+  height: 24px;
+  line-height: 24px;
+  text-shadow: 0 0 8px #b57bff;
+}
+
+.letra-char.revelada {
+  animation: popIn 0.3s ease;
+}
+
+.letra-linha {
+  width: 22px;
+  height: 3px;
+  background: #7b2fff;
+}
+
+@keyframes popIn {
+  0%   { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60%  { transform: scale(1.3) rotate(5deg); }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+/* ===== TECLADO ===== */
+#teclado {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.tecla {
+  width: 34px;
+  height: 34px;
+  background: #2d1b5e;
+  border: 2px solid #7b2fff;
+  color: #e0d0ff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.1s, transform 0.1s;
+}
+
+.tecla:hover:not(:disabled) {
+  background: #4a2a8a;
+  transform: scale(1.1);
+  box-shadow: 0 0 8px #7b2fff;
+}
+
+.tecla:disabled {
+  cursor: default;
+  transform: none;
+}
+
+.tecla.acerto {
+  background: #2a7b4f;
+  border-color: #4caf50;
+  color: #b9f6ca;
+}
+
+.tecla.erro {
+  background: #5a1a1a;
+  border-color: #c62828;
+  color: #ff5252;
+}
+
+/* ===== ÁREA DE ADIVINHAR PALAVRA ===== */
+#area-adivinhar {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: stretch;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+#input-adivinhar {
+  flex: 1;
+  min-width: 160px;
+  max-width: 320px;
+  padding: 8px 10px;
+  background: #1a0a2e;
+  border: 2px solid #7b2fff;
+  color: #f0e6ff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  outline: none;
+  letter-spacing: 2px;
+}
+
+#input-adivinhar:focus {
+  border-color: #f9c74f;
+}
+
+#input-adivinhar:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#btn-adivinhar {
+  padding: 8px 14px;
+  background: #2a4a7b;
+  border: 2px solid #4fa3e0;
+  color: #90e0ef;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  cursor: pointer;
+  transition: all 0.1s;
+  white-space: nowrap;
+}
+
+#btn-adivinhar:hover:not(:disabled) {
+  background: #1a6aaa;
+  box-shadow: 0 0 10px #4fa3e066;
+  transform: scale(1.04);
+}
+
+#btn-adivinhar:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ===== MENSAGEM ===== */
+#mensagem {
+  text-align: center;
+  font-size: 10px;
+  min-height: 20px;
+  color: #f9c74f;
+  text-shadow: 0 0 8px #f9c74f;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+/* ===== BOTÕES INFERIORES ===== */
+.btns-footer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-footer {
+  padding: 10px 16px;
+  background: #7b2fff;
+  border: 3px solid #f9c74f;
+  color: #f9c74f;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.1s;
+}
+
+.btn-footer:hover {
+  background: #9a4aff;
+  transform: scale(1.05);
+  box-shadow: 0 0 14px #f9c74f88;
+}
+
+.btn-footer.secundario {
+  background: #2d1b5e;
+  border-color: #7b2fff;
+  color: #b57bff;
+}
+
+.btn-footer.secundario:hover {
+  background: #3d2b7e;
+  box-shadow: 0 0 10px #7b2fff88;
+}
+
+/* ===== CANVAS DE FOGOS (overlay fullscreen) ===== */
+#fogos-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  display: none;
+}
+
+/* ===== OVERLAY DE VITÓRIA ===== */
+#overlay-vitoria {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  background: rgba(10, 4, 22, 0.82);
+  animation: fadeInOverlay 0.5s ease;
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+#overlay-vitoria.ativo {
+  display: flex;
+}
+
+.vitoria-titulo {
+  color: #f9c74f;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px #f9c74f, 2px 2px #b5450b;
+  animation: pulseText 1s ease infinite alternate;
+  padding: 0 16px;
+  line-height: 2;
+}
+
+@keyframes pulseText {
+  from { text-shadow: 0 0 10px #f9c74f, 2px 2px #b5450b; transform: scale(1); }
+  to   { text-shadow: 0 0 30px #ffe169, 2px 2px #b5450b; transform: scale(1.04); }
+}
+
+.vitoria-sub {
+  color: #90e0ef;
+  font-size: 8px;
+  text-align: center;
+  letter-spacing: 1px;
+  animation: pulseText 1.2s ease infinite alternate-reverse;
+}
+
+.vitoria-bananas {
+  font-size: 32px;
+  letter-spacing: 6px;
+  animation: bounceRow 0.8s ease infinite alternate;
+}
+
+@keyframes bounceRow {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-8px); }
+}
+
+/* ===== ANIMAÇÕES DE FEEDBACK ===== */
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-6px); }
+  40%     { transform: translateX(6px); }
+  60%     { transform: translateX(-4px); }
+  80%     { transform: translateX(4px); }
+}
+
+@keyframes flashVerde {
+  0%,100% { box-shadow: 0 0 40px #7b2fff66; }
+  50%     { box-shadow: 0 0 40px #4caf5088, inset 0 0 30px #0a2a1a; }
+}
+
+.shake       { animation: shake 0.4s ease; }
+.flash-verde { animation: flashVerde 0.5s ease; }
+
+/* ===== DIVISOR ===== */
+.divider {
+  border: none;
+  border-top: 2px solid #2d1b5e;
+  margin: 14px 0;
+}

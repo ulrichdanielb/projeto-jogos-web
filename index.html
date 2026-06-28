@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="global.css">
+    <title>Play UEL</title>
+</head>
+<body>
+    <header>
+        <img style="height: 6rem;" id="logo" src="imgs/Logo.png" alt="Logo Play Well">
+    </header>
+    <main>
+    <div class="coluna">   
+        <button onclick="abrirJogo('jogos/velha/tic_tac_toe_arcade.html')">
+            Jogo da velha
+        </button>
+        <button onclick="abrirJogo('jogos/jogo-da-memoria/menuMemoria.html')">
+            Jogo da memória
+        </button>
+        <button onclick="abrirJogo('jogos/forca/forca.html')">
+            Jogo da forca
+        </button>
+    </div>
+
+    <div class="coluna">
+        <button onclick="abrirJogo('jogos/reflexo/reflexo.html')">
+            Jogo do reflexo
+        </button>
+        <button onclick="abrirJogo('jogos/pedra-papel-tesoura/ppt.html')">
+            Pedra, papel e tesoura
+        </button>
+        <a href="">
+            <button>Extra</button>
+        </a>
+    </div>
+</main>
+    <footer>
+        <p style="color: rgb(0, 0, 0);">Todos os direitos reservados &copy;</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>

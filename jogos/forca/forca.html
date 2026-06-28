@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Forca — Macaco Pixel Art</title>
+  <link rel="stylesheet" href="forca.css">
+</head>
+<body>
+
+  <!-- CANVAS FULLSCREEN DE FOGOS DE ARTIFÍCIO -->
+  <canvas id="fogos-canvas"></canvas>
+
+  <!-- OVERLAY DE VITÓRIA -->
+  <div id="overlay-vitoria">
+    <div class="vitoria-bananas">🍌🍌🍌</div>
+    <div class="vitoria-titulo">PARABÉNS,<br>VOCÊ FOI<br>NOTA UEL!</div>
+    <div class="vitoria-sub">🐒 O MACACO AGRADECE! 🐒</div>
+    <button class="btn-footer" id="btn-novo-vitoria" style="margin-top:8px">▶ JOGAR DE NOVO</button>
+  </div>
+
+  <div id="game-container">
+    <h1>🍌 JOGO DA FORCA 🍌</h1>
+
+    <!-- ===== TELA 1: ESCOLHA DE MODO ===== -->
+    <div id="tela-modo">
+      <p class="modo-titulo">ESCOLHA O MODO DE JOGO</p>
+      <div class="modo-botoes">
+        <button class="btn-modo" id="btn-1p">
+          <span class="modo-icon">🐒</span>
+          1 JOGADOR<br><span style="font-size:7px;color:#90e0ef">Palavra aleatória</span>
+        </button>
+        <button class="btn-modo" id="btn-2p">
+          <span class="modo-icon">🍌🍌</span>
+          2 JOGADORES<br><span style="font-size:7px;color:#90e0ef">Um digita, outro adivinha</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== TELA 2: ENTRADA DE PALAVRA (2P) ===== -->
+    <div id="tela-entrada">
+      <p class="entrada-titulo">👤 JOGADOR 1 — DIGITE A PALAVRA</p>
+      <p class="entrada-sub">O JOGADOR 2 NÃO PODE OLHAR!</p>
+      <input
+        type="password"
+        id="input-palavra-2p"
+        class="input-pixel"
+        maxlength="20"
+        placeholder="DIGITE A PALAVRA..."
+        autocomplete="off"
+      />
+      <input
+        type="text"
+        id="input-dica-2p"
+        class="input-pixel"
+        maxlength="40"
+        placeholder="DICA (OPCIONAL)..."
+        autocomplete="off"
+      />
+      <p class="entrada-aviso" id="aviso-entrada"></p>
+      <div class="btns-footer">
+        <button class="btn-footer" id="btn-confirmar-palavra">✔ CONFIRMAR</button>
+        <button class="btn-footer secundario" id="btn-voltar-modo">← VOLTAR</button>
+      </div>
+    </div>
+
+    <!-- ===== TELA 3: JOGO ===== -->
+    <div id="tela-jogo">
+      <div id="badge-modo">MODO: 1 JOGADOR</div>
+
+      <div id="status-bar">
+        <div class="vidas" id="vidas"></div>
+        <div id="tentativas-texto">ERROS: 0 / 6</div>
+      </div>
+
+      <canvas id="monkey-canvas" width="300" height="220"></canvas>
+
+      <div id="dica-texto">DICA: ...</div>
+      <div id="palavra-container"></div>
+      <div id="mensagem"></div>
+
+      <hr class="divider">
+
+      <!-- TECLADO DE LETRAS -->
+      <div id="teclado"></div>
+
+      <!-- INPUT PARA ADIVINHAR A PALAVRA COMPLETA -->
+      <div id="area-adivinhar">
+        <input
+          type="text"
+          id="input-adivinhar"
+          placeholder="ADIVINHAR PALAVRA..."
+          maxlength="30"
+          autocomplete="off"
+        />
+        <button id="btn-adivinhar">🔍 ADIVINHAR</button>
+      </div>
+
+      <hr class="divider">
+
+      <div class="btns-footer">
+        <button class="btn-footer" id="btn-novo">▶ NOVO JOGO</button>
+        <button class="btn-footer secundario" id="btn-trocar-modo">⇄ TROCAR MODO</button>
+      </div>
+    </div>
+
+  </div><!-- fim #game-container -->
+
+  <script src="forca.js"></script>
+</body>
+</html>

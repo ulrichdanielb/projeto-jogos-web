@@ -1,7 +1,7 @@
-DocumentType.getElementbyId("b1"),addEventListener("click", function (){
-    window.location.href = "jm1p.html";
-})
+document.getElementById("b1").addEventListener("click", function () {
+    window.location.href = "1pMemoria.html";
+});
 
-DocumentType.getElementbyId("s"),addEventListener("click", function (){
-    window.location.href = "index.html";
-})
+document.getElementById("s").addEventListener("click", function () {
+    window.location.href = "../../index.html";
+});
