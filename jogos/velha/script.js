@@ -26,7 +26,7 @@ function setMode(m) {
 }
 
 function move(i) {
-  if (over || board[i]) return;
+  if (over || board[i] !== null) return;
   place(i, turn);
   const w = checkWin();
   if (w) { endGame(w, turn); return; }
