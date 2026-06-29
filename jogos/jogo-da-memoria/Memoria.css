@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Arcade';
+  src: url('fontes/PressStart2P.ttf') format('truetype'),
+       url('fontes/PressStart2P.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -5,15 +13,18 @@
 }
 
 body {
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   display: flex;
   flex-direction: column;
   background: #000000;
+  font-family: 'Arcade', sans-serif;
 }
 
 .memory-game {
-  width: 640px;
-  height: 640px;
+  width: 600px;
+  height: 600px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -53,4 +64,11 @@ body {
 
 .memory-card.flip {
   transform: rotateY(180deg);
+}
+
+h1 {
+  margin-top: 40px;
+  color: red;
+  font-family: 'Arcade', sans-serif;
+  font-size: 60px;
 }
