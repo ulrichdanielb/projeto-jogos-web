@@ -62,7 +62,7 @@ function endGame(combo, winner) {
     history.unshift(`<span class="chip ${winner===0?'chip-win':'chip-lose'}">${MARKS[winner]}</span>`);
   } else {
     b.className = 'turn-banner draw';
-    b.textContent = '🍌 draw! 🐒';
+    b.textContent = '🍌 velha 🐒';
     scores[2]++;
     history.unshift('<span class="chip chip-draw">=</span>');
   }
