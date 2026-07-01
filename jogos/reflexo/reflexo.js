@@ -151,6 +151,11 @@ iniciar.addEventListener("click", function ()
 
 document.addEventListener("keydown", function(event)
 {
+    if (teclasPlayer2.includes(event.key))
+    {
+        event.preventDefault();
+    }
+
     if (jogoEncerrado === true)
     {
         return;
