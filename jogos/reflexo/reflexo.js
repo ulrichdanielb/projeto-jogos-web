@@ -283,18 +283,66 @@ document.addEventListener("keydown", function(event)
         return;
     }
 
-    if (teclasPlayer1.includes(event.key))
+    if (teclasPlayer1.includes(event.key) && jogoAtivo === true)
     {
         jogoAtivo = false;
-        resultado.innerText = "Player 1 errou!";
+
+        vida1 -= 1;
+        atualizarBarras();
+
+        resultado.innerText = "Player 1 errou e perdeu vida!";
+
+        player1.src = "imgsReflexo/macacoDano.png";
+
+        if (vida1 <= 0)
+        {
+            resultado.innerText = "PLAYER 2 VENCEU!";
+            tecla.innerText = "";
+
+            player2.src = "imgsReflexo/macacoVitorioso.png";
+            player1.src = "imgsReflexo/macacoDerrotado.png";
+
+            jogoEncerrado = true;
+            return;
+        }
+
+        setTimeout(function()
+        {
+            player1.src = "imgsReflexo/macacoBase.png";
+        }, 600);
+
         setTimeout(novaRodada, 1000);
         return;
     }
 
-    if (teclasPlayer2.includes(event.key))
+    if (teclasPlayer2.includes(event.key) && jogoAtivo === true)
     {
         jogoAtivo = false;
-        resultado.innerText = "Player 2 errou!";
+
+        vida2 -= 1;
+        atualizarBarras();
+
+        resultado.innerText = "Player 2 errou e perdeu vida!";
+
+        player2.src = "imgsReflexo/macacoDano.png";
+
+        if (vida2 <= 0)
+        {
+            resultado.innerText = "PLAYER 1 VENCEU!";
+            tecla.innerText = "";
+
+            player1.src = "imgsReflexo/macacoVitorioso.png";
+            player2.src = "imgsReflexo/macacoDerrotado.png";
+
+            jogoEncerrado = true;
+            return;
+        }
+
+        setTimeout(function()
+        {
+            player2.src = "imgsReflexo/macacoBase.png";
+        }, 600);
+
         setTimeout(novaRodada, 1000);
         return;
     }
