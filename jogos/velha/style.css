@@ -127,3 +127,18 @@
   .chip-win  { color: #00ff41; border: 1px solid #00ff4166; background: #00ff4111; }
   .chip-lose { color: #ff4141; border: 1px solid #ff414166; background: #ff414111; }
   .chip-draw { color: #ffe600; border: 1px solid #ffe60066; background: #ffe60011; }
+
+  .back-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 12px;
+    z-index: 1000;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: white;
+}

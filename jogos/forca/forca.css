@@ -517,3 +517,19 @@ h1 {
   border-top: 2px solid #2d1b5e;
   margin: 14px 0;
 }
+
+/* === VOLTAR MENU === */
+
+.back-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 12px;
+    z-index: 1000;
+}
+
+.back-link:hover {
+    color: white;
+}
